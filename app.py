@@ -27,10 +27,10 @@ try:
     matched_recipes = df[df['Category'].str.contains(meal_choice, case=False)]
 
     #get ingredients
-    ingredients = matched_recipes['Ingredients'].str.split('.').explode().str.strip()
+    expl_ingredients = matched_recipes['Ingredients'].str.split('.').explode().str.strip()
 
     #sort alphabetically
-    ingredients = sorted(list(set(ingredients)))
+    ingredients = sorted(list(set(expl_ingredients)))
 
     st.write('### What ingredients do you have today?')
 
@@ -38,8 +38,7 @@ try:
     selected_ingredients = []
     for ingredient in ingredients:
         if ingredient:
-            is_checked = st.checkbox(ingredient)
-            if is_checked:
+            if st.checkbox(ingredient, key=f"check_{ingredient}")
                 selected_ingredients.append(ingredient)
 
     #test if works;
