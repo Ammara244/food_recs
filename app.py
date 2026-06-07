@@ -43,7 +43,7 @@ try:
                 selected_ingredients.append(ingredient)
 
     #test if works;
-    st.write("You currently have:", selected_ingredients")
+    st.write("You currently have:", selected_ingredients)
 
 
 except Exception as e:
