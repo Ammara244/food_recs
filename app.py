@@ -18,10 +18,10 @@ try:
     df['Ingredients'] = df['Ingredients'].fillna('').astype(str).str.strip()
 
 
-meal_choice = st.radio("What meal are you eating?", ["Breakfast", "Lunch", "Dinner", "Snack"])
+    meal_choice = st.radio("What meal are you eating?", ["Breakfast", "Lunch", "Dinner", "Snack"])
 
-st.write("You seleted", {meal_choice})
+    st.write("You seleted", {meal_choice})
 
-         except Exception as e:
-st.error("Could not connect right now.")
+except Exception as e:
+    st.error("Could not connect right now.")
 
