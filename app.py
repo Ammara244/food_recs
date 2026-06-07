@@ -17,31 +17,11 @@ try:
     df['Category'] = df['Category'].fillna('').astype(str).str.strip()
     df['Ingredients'] = df['Ingredients'].fillna('').astype(str).str.strip()
 
-    st.header("Our Live Recipe Box")
 
-    # Display each recipe on screen
-    for index, row in df.iterrows():
-        # Skip empty rows if there are any
-        if not row['Name']:
-            continue
-            
-        st.subheader(f"{row['Name']}")
-        
-        # Display Categories beautifully
-        st.caption(f"Categories: {row['Category']}")
-        
-        # Display Ingredients
-        st.write("**Ingredients needed:**")
-        # Split ingredients by comma so we can bullet point them
-        ingredient_list = [ing.strip() for ing in row['Ingredients'].split(',')]
-        for ing in ingredient_list:
-            # Highlight substitutions if they use a slash '/'
-            if '/' in ing:
-                st.write(f"- 🔀 {ing} *(You can use either!)*")
-            else:
-                st.write(f"- {ing}")
-                
-        st.write("---") # Visual divider line
+meal_choice = st.radio("What meal are you eating?", ["Breakfast", "Lunch", "Dinner", "Snack"])
 
-except Exception as e:
-    st.error("Uh oh! Could not connect to the spreadsheet. Make sure your Google Sheet is set to 'Anyone with the link can view'.")
+st.write("You seleted", {meal_choice}")
+
+         except Exception as e:
+st.error("Could not connect right now.")
+
