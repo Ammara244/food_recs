@@ -22,6 +22,30 @@ try:
 
     st.write("You seleted", {meal_choice})
 
+
+    #filter to find recipes from categroy
+    matched_recipes = df[df['Category'].str.contains(meal_choice, case=False)]
+
+    #get ingredients
+    ingredients = matched_recipes['Ingredients'].str.split('.').explode().str.strip()
+
+    #sort alphabetically
+    ingredients = sorted(list(set(ingredients)))
+
+    st.write('### What ingredients do you have today?')
+
+    # make checkbox
+    selected_ingredients = []
+    for ingredient in ingredients:
+        if ingredient:
+            is_checked = st.checkbox(ingredient)
+            if is_checked:
+                selected_ingredients.append(ingredient)
+
+    #test if works;
+    st.write("You currently have:", selected_ingredients")
+
+
 except Exception as e:
     st.error("Could not connect right now.")
 
