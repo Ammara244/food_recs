@@ -38,7 +38,7 @@ try:
     selected_ingredients = []
     for ingredient in ingredients:
         if ingredient:
-            if st.checkbox(ingredient, key=f"check_{ingredient}")
+            if st.checkbox(ingredient, key=f"check_{ingredient}"):
                 selected_ingredients.append(ingredient)
 
     #test if works;
